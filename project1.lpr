@@ -3,7 +3,7 @@ uses graph, wincrt;
 
 const
   sirka = 550;
-  vyska = 400;
+  vyska = 250;
 
 type
   hrac = record
@@ -38,13 +38,13 @@ begin
   // mena hracov
   outtextxy(x0Plocha + 10, y0Plocha + 10, hrac1.meno);
   outtextxy(x0Plocha + sirka - length(hrac2.meno) * 10 - 5, y0Plocha + 10, hrac2.meno);
-                             
-  // cislo hry   
+
+  // cislo hry
   str(pocetHier, s1);
   outtextxy(x0Plocha + sirka div 2 - 70, y0Plocha + 10, 'Hra c.' + s1);
 
   // priebezne medzi-skore
-  str(hrac1.vyhrateMedzihry, s1); 
+  str(hrac1.vyhrateMedzihry, s1);
   str(hrac2.vyhrateMedzihry, s2);
   outtextxy(x0Plocha + sirka div 2 - 70, y0Plocha + 30, 'Medzi-skore: ' + s1 + ' : ' + s2);
 
@@ -52,7 +52,6 @@ begin
   str(hrac1.vyhrateHry, s1);
   str(hrac2.vyhrateHry, s2);
   outtextxy(x0Plocha + sirka div 2 - 70, y0Plocha + 50, 'Skore: ' + s1 + ' : ' + s2);
-
 end;
 
 procedure kamen(x, y: integer);
@@ -135,12 +134,15 @@ procedure hracStat(x0, y0: integer; hr: hrac);
 var s: string;
 begin 
   outtextxy(x0, y0, hr.meno);
+          
+  str(pocetHier, s);
+  outtextxy(x0, y0 + 20, 'Pocet hier: ' + s);
 
   str(hr.vyhrateHry, s);
-  outtextxy(x0, y0 + 20, 'Vyhrate hry: ' + s);
+  outtextxy(x0, y0 + 40, 'Vyhrate hry: ' + s);
 
   str(hr.celkVyhrateMedzihry, s);
-  outtextxy(x0, y0 + 40, 'Vyhrate medzi-hry: ' + s);
+  outtextxy(x0, y0 + 60, 'Vyhrate medzi-hry: ' + s);
 end;
 
 procedure sumar(x0, y0: integer);
@@ -149,7 +151,7 @@ begin
   hracStat(x0, y0, hrac1); 
   hracStat(x0 + 300, y0, hrac2);
 
-  outtextxy(x0 + 200, y0 + 200, 'Stlacte lubovolnu klaves');
+  outtextxy(x0 + 150, y0 + 200, 'Stlacte lubovolny klaves');
   repeat until keypressed;
 end;
 
@@ -187,6 +189,8 @@ begin
         hrac2.vyhrateMedzihry:= hrac2.vyhrateMedzihry + 1;
 
       plocha();
+      delay(200);
+
       nakresliTah(x0Plocha + 50, y0Plocha + 100, hrac1.tah);
       nakresliTah(x0Plocha + sirka - 100, y0Plocha + 100, hrac2.tah);
       delay(2000);
