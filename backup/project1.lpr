@@ -151,7 +151,7 @@ begin
   hracStat(x0, y0, hrac1); 
   hracStat(x0 + 300, y0, hrac2);
 
-  outtextxy(x0 + 150, y0 + 200, 'Stlacte lubovoln klaves');
+  outtextxy(x0 + 150, y0 + 200, 'Stlacte lubovolny klaves');
   repeat until keypressed;
 end;
 

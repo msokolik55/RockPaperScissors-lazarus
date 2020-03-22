@@ -11,7 +11,8 @@ type
     vyhrateMedzihry, vyhrateHry, tah, celkVyhrateMedzihry: integer;
   end;
 
-var gd, gm, x0Plocha, y0Plocha,
+var
+  gd, gm, x0Plocha, y0Plocha,
     pocetMedzihier, pocetHier: smallint;
   hrac1, hrac2: hrac;
   koniec: boolean;
